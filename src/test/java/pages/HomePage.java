@@ -23,4 +23,35 @@ public class HomePage {
         wait.until(ExpectedConditions.presenceOfElementLocated(greeting));
           assertEquals(galileo_home , driver.getCurrentUrl());
     }
+
+    public void clickMenuLoyaltyProgram(String loyaltyProgramSubMenu){
+        if (loyaltyProgramSubMenu.contentEquals("Loyalty")){
+            System.out.println("Loyalty");
+        }
+
+        else if (loyaltyProgramSubMenu.contentEquals("Promo")){
+            System.out.println("Promo");
+        }
+        else if (loyaltyProgramSubMenu.contentEquals("Voucher")){
+            System.out.println("Voucher");
+        }
+        else {
+            System.out.println("UNUSUAL CONDITION");
+        }
+    }
+
+
+    public void assertListSubLoyaltyProgram(String listSubLoyaltyProgram){
+        if (listSubLoyaltyProgram.contentEquals("Loyalty")){
+            System.out.println("Loyalty");
+        }
+        else         if (listSubLoyaltyProgram.contentEquals("Promo")){
+            System.out.println("Promo");
+        }
+
+        else         if (listSubLoyaltyProgram.contentEquals("Voucher")){
+            System.out.println("Voucher");
+        }
+
+    }
 }
