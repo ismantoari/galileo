@@ -28,26 +28,32 @@ public class HomePage {
           assertEquals(galileo_home , driver.getCurrentUrl());
     }
 
-    public void clickMenuLoyaltyProgram(String loyaltyProgramSubMenu){
+    public void clickMenuLoyaltyProgram(String loyaltyProgramMenu){
 
         //==========================================================
         // klik menu Loyalty Program
         //=========================================================
-        if (loyaltyProgramSubMenu.contentEquals("Loyalty")){
+        //if (loyaltyProgramSubMenu.contentEquals("Loyalty")){
+
             driver.findElement(menuLoyaltyProgram).click();
-        }
-        else {
-            System.out.println("Bukan menu Loyalty");
+        System.out.println("sudah di klik : " + loyaltyProgramMenu);
+
+
+
+
+        //}
+        //else {
+        //System.out.println("Bukan menu Loyalty");
         }
 
         //===========================================================
 
-        List<WebElement> mainMenu = driver.findElements(menu);
-        ArrayList<String> menuGalileo = new ArrayList<String>();
-
-        int banyakMenu;
-        banyakMenu = mainMenu.size();
-        System.out.println("Banyak Menu : " + banyakMenu);
+//        List<WebElement> mainMenu = driver.findElements(menu);
+//        ArrayList<String> menuGalileo = new ArrayList<String>();
+//
+//        int banyakMenu;
+//        banyakMenu = mainMenu.size();
+//        System.out.println("Banyak Menu : " + banyakMenu);
 
 
 //        for (int i = 0; i < banyakMenu; i++) {
@@ -55,7 +61,7 @@ public class HomePage {
 //            menuGalileo.add(mainMenu.get(i).getText());
 //            System.out.println("menuGalileo"+i+ " " + menuGalileo.get(i) );
 //        }
-    }
+//    }
 
 
     public void assertListSubLoyaltyProgram(String listSubLoyaltyProgram){
