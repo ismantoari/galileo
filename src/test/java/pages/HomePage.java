@@ -20,6 +20,7 @@ public class HomePage {
 
     By greeting = By.xpath("//h5[@class=\"MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-1puxygr\"]");
     By menu = By.xpath("//div[@class=\"MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-15q9ois\"]");
+    By menuLoyaltyProgram = By.xpath("(//div[@class=\"MuiListItemText-root css-136jjw8\"])[3]");
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     public void validateUserIsOnHomePage(){
@@ -28,6 +29,14 @@ public class HomePage {
     }
 
     public void clickMenuLoyaltyProgram(String loyaltyProgramSubMenu){
+        if (loyaltyProgramSubMenu.contentEquals("Loyalty")){
+            driver.findElement(menuLoyaltyProgram).click();
+        }
+        else {
+            System.out.println("Bukan menu Loyalty");
+        }
+
+
         List<WebElement> mainMenu = driver.findElements(menu);
         ArrayList<String> menuGalileo = new ArrayList<String>();
 
@@ -36,11 +45,11 @@ public class HomePage {
         System.out.println("Banyak Menu : " + banyakMenu);
 
 
-        for (int i = 0; i < banyakMenu; i++) {
-            wait.until(ExpectedConditions.presenceOfElementLocated(menu));
-            menuGalileo.add(mainMenu.get(i).getText());
-            System.out.println("menuGalileo"+i+ " " + menuGalileo.get(i) );
-        }
+//        for (int i = 0; i < banyakMenu; i++) {
+//            wait.until(ExpectedConditions.presenceOfElementLocated(menu));
+//            menuGalileo.add(mainMenu.get(i).getText());
+//            System.out.println("menuGalileo"+i+ " " + menuGalileo.get(i) );
+//        }
     }
 
 
