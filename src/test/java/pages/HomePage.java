@@ -4,9 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 import static helper.BestUtil.driver;
 import static helper.Endpoint.galileo_home;
@@ -16,42 +19,43 @@ import static org.junit.Assert.assertTrue;
 public class HomePage {
 
     By greeting = By.xpath("//h5[@class=\"MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-1puxygr\"]");
-
+    By menu = By.xpath("//div[@class=\"MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-15q9ois\"]");
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     public void validateUserIsOnHomePage(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.presenceOfElementLocated(greeting));
+          wait.until(ExpectedConditions.presenceOfElementLocated(greeting));
           assertEquals(galileo_home , driver.getCurrentUrl());
     }
 
     public void clickMenuLoyaltyProgram(String loyaltyProgramSubMenu){
-        if (loyaltyProgramSubMenu.contentEquals("Loyalty")){
-            System.out.println("Loyalty");
-        }
+        List<WebElement> mainMenu = driver.findElements(menu);
+        ArrayList<String> menuGalileo = new ArrayList<String>();
 
-        else if (loyaltyProgramSubMenu.contentEquals("Promo")){
-            System.out.println("Promo");
-        }
-        else if (loyaltyProgramSubMenu.contentEquals("Voucher")){
-            System.out.println("Voucher");
-        }
-        else {
-            System.out.println("UNUSUAL CONDITION");
+        int banyakMenu;
+        banyakMenu = mainMenu.size();
+        System.out.println("Banyak Menu : " + banyakMenu);
+
+
+        for (int i = 0; i < banyakMenu; i++) {
+            wait.until(ExpectedConditions.presenceOfElementLocated(menu));
+            menuGalileo.add(mainMenu.get(i).getText());
+            System.out.println("menuGalileo"+i+ " " + menuGalileo.get(i) );
         }
     }
 
 
     public void assertListSubLoyaltyProgram(String listSubLoyaltyProgram){
-        if (listSubLoyaltyProgram.contentEquals("Loyalty")){
-            System.out.println("Loyalty");
+        if (listSubLoyaltyProgram.contentEquals("Loyalty List")){
+            System.out.println("Loyalty List");
         }
-        else         if (listSubLoyaltyProgram.contentEquals("Promo")){
-            System.out.println("Promo");
+        else if (listSubLoyaltyProgram.contentEquals("Promo List")){
+            System.out.println("Promo List");
         }
-
-        else         if (listSubLoyaltyProgram.contentEquals("Voucher")){
-            System.out.println("Voucher");
+        else if (listSubLoyaltyProgram.contentEquals("Voucher List")){
+            System.out.println("Voucher List");
         }
-
+        else {
+            System.out.println("WRONG SELECT CONDITION");
+        }
     }
 }

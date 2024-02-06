@@ -10,8 +10,8 @@ Feature: Login
 
     Examples:
       |username     |password          | case login                  |
-      |administrator|pvs1909~          | positive                    |
-      |administrator|invalid_password  | negative invalid pwd        |
-      |invalid_user |pvs1909~          | negative invalid user       |
+      |ari          |secret_sauce      | positive                    |
+      |ari          |invalid_password  | negative invalid pwd        |
+      |invalid_user |secret_sauce      | negative invalid user       |
       |             |                  | negative user blank         |
-      |administrator|                  | negative password blank     |
+      |ari          |                  | negative password blank     |

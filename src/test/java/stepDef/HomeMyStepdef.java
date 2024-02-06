@@ -12,8 +12,8 @@ public class HomeMyStepdef {
         homePage.clickMenuLoyaltyProgram(LoyaltyProgramSubMenu);
     }
 
-    @Then("appear {string}")
-    public void appear(String listSubLoyaltyProgram) {
+    @Then("appear list sub loyalty program {string}")
+    public void appearListSubLoyaltyProgram(String listSubLoyaltyProgram) {
         homePage.assertListSubLoyaltyProgram(listSubLoyaltyProgram);
     }
 }

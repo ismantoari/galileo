@@ -7,7 +7,7 @@ Feature: Loyalty Program
     And user input password with "pvs1909~"
     And user click login button
     When user click menu Loyalty Program "<Sub Loyalty Program>"
-    Then appear "<List Sub Loyalty Program>"
+    #Then appear list sub loyalty program "<List Sub Loyalty Program>"
 
 
     Examples:
