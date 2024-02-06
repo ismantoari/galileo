@@ -29,6 +29,10 @@ public class HomePage {
     }
 
     public void clickMenuLoyaltyProgram(String loyaltyProgramSubMenu){
+
+        //==========================================================
+        // klik menu Loyalty Program
+        //=========================================================
         if (loyaltyProgramSubMenu.contentEquals("Loyalty")){
             driver.findElement(menuLoyaltyProgram).click();
         }
@@ -36,6 +40,7 @@ public class HomePage {
             System.out.println("Bukan menu Loyalty");
         }
 
+        //===========================================================
 
         List<WebElement> mainMenu = driver.findElements(menu);
         ArrayList<String> menuGalileo = new ArrayList<String>();
