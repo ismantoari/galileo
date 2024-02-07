@@ -29,6 +29,10 @@ public class HomePage {
         return By.xpath("//*[@class='MuiListItemText-root css-xdiy5h' and text()='" + submenu + "']");
     }
 
+    By buttonTopRight(String buttonAdd) {
+        return By.xpath("//button[@type='button'and text()='" + buttonAdd + "']");
+    }
+
     By pageVerification(String pageTitle) {
         return By.xpath("//*[text()='" + pageTitle + "']");
     }
@@ -79,4 +83,9 @@ public class HomePage {
     public void pageVerivication(String pageTitle) {
         driver.findElement(pageVerification(pageTitle)).isDisplayed();
     }
+
+    public void clickAdd(String buttonId) {
+        driver.findElement(buttonTopRight(buttonId)).click();
+    }
+
 }

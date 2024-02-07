@@ -10,7 +10,7 @@ Feature: Login
 
     Examples:
       |username     |password          | case login                  |
-      |ari          |secret_sauce      | positive                    |
+      |administrator|Pvs1909~          | positive                    |
       |ari          |invalid_password  | negative invalid pwd        |
       |invalid_user |secret_sauce      | negative invalid user       |
       |             |                  | negative user blank         |
