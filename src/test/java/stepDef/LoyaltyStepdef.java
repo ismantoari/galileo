@@ -1,5 +1,6 @@
 package stepDef;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
@@ -26,5 +27,10 @@ public class LoyaltyStepdef {
     public void userClickAddButton(String buttonAdd) {
         homePage.clickAdd(buttonAdd);
 
+    }
+
+    @And("user select flag language {string}")
+    public void userSelectFlagLanguage(String languageFlag) {
+        homePage.selectFlagLanguage(languageFlag);
     }
 }

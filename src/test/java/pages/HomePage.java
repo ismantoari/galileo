@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -29,15 +30,23 @@ public class HomePage {
         return By.xpath("//*[@class='MuiListItemText-root css-xdiy5h' and text()='" + submenu + "']");
     }
 
-    By buttonTopRight(String buttonAdd) {
-        return By.xpath("//button[@type='button'and text()='" + buttonAdd + "']");
+    By addButtonTopRight(String buttonAdd) {
+        return By.xpath("//button[normalize-space()='"+buttonAdd+ "']");
     }
 
     By pageVerification(String pageTitle) {
         return By.xpath("//*[text()='" + pageTitle + "']");
     }
 
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    By countryFlag (String flagOfCountry){
+        return By.xpath("//li[@role='menuitem']/descendant::*[text()='"+flagOfCountry+"']");
+    }
+
+    By selectFlag = By.xpath("//button[@class=\"MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-13be9o2\"]");
+
+
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
 
     public void validateUserIsOnHomePage() {
         wait.until(ExpectedConditions.presenceOfElementLocated(greeting));
@@ -84,8 +93,18 @@ public class HomePage {
         driver.findElement(pageVerification(pageTitle)).isDisplayed();
     }
 
-    public void clickAdd(String buttonId) {
-        driver.findElement(buttonTopRight(buttonId)).click();
+    public void clickAdd(String buttonMark) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(addButtonTopRight(buttonMark)));
+        driver.findElement(addButtonTopRight(buttonMark)).click();
     }
+
+    public void selectFlagLanguage(String idOrEn){
+        wait.until(ExpectedConditions.presenceOfElementLocated(selectFlag));
+        driver.findElement(selectFlag).click();
+        //driver.findElement(countryFlag(idOrEn)).click();
+
+        System.out.println(idOrEn);
+    }
+
 
 }

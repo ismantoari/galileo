@@ -21,12 +21,14 @@ public class LoginPage {
     By errorInvUserPwd = By.xpath("//div[@class='MuiAlert-message css-2shwac']");
     By errorUserBlank = By.id(":r1:-helper-text");
     By errorPasswordBlank = By.id(":r2:-helper-text");
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     public void url_galileo(){
         driver.get(host_galileo);
     }
 
     public void inputUserNameWith(String name){
+        wait.until(ExpectedConditions.presenceOfElementLocated(usernameInputText));
         driver.findElement(usernameInputText).sendKeys(name);
     }
 
@@ -45,7 +47,7 @@ public class LoginPage {
 
 
     public void assertLogin(String testCategory){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         switch (testCategory) {
             case "positive" -> {
