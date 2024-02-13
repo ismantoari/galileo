@@ -42,7 +42,9 @@ public class HomePage {
         return By.xpath("//li[@role='menuitem']/descendant::*[text()='"+flagOfCountry+"']");
     }
 
-    By selectFlag = By.xpath("//button[@class=\"MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-13be9o2\"]");
+    By selectFlag = By.xpath("//img[@alt='Indonesia']");
+
+    By alertLogin = By.xpath("//div[@role=\"alert\"]");
 
 
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -99,7 +101,8 @@ public class HomePage {
     }
 
     public void selectFlagLanguage(String idOrEn){
-        wait.until(ExpectedConditions.presenceOfElementLocated(selectFlag));
+        wait.until(ExpectedConditions.elementToBeClickable(selectFlag));
+       // wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(selectFlag));
         driver.findElement(selectFlag).click();
         //driver.findElement(countryFlag(idOrEn)).click();
 

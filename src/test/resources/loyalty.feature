@@ -17,10 +17,10 @@ Feature: Loyalty
     And user click login button
     And check login "positive"
     And user select flag language "Indonesia"
+    #perlu di klik language lebih dulu karena untuk memastikan string dalam bahasa indonesia
     And user click main menu "Loyalty Program"
     And user click sub menu "Loyalty"
-    When user click add button "Add Loyalty"
-    #When user click sub menu Tambah Loyalty
+    When user click add button "Tambah Loyalty"
     Then verify show page "Loyalty"
 
 

@@ -1,8 +1,8 @@
 package helper;
 
 public class Endpoint {
-    public static final String url_ku = "http://192.168.7.110";
-    public static final String url = "http://182.253.33.106"; //pub
+    public static final String url = "http://192.168.7.110";
+    public static final String url_pub = "http://182.253.33.106"; //pub
 
     public static final String urlDev = "http://192.168.202.151";
     public static final String port = "9797";

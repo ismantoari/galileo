@@ -21,6 +21,7 @@ public class LoginPage {
     By errorInvUserPwd = By.xpath("//div[@class='MuiAlert-message css-2shwac']");
     By errorUserBlank = By.id(":r1:-helper-text");
     By errorPasswordBlank = By.id(":r2:-helper-text");
+    By alertLogin = By.xpath("//div[@role=\"alert\"]");
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     public void url_galileo(){
@@ -53,16 +54,25 @@ public class LoginPage {
             case "positive" -> {
                 HomePage homePage = new HomePage();
                 homePage.validateUserIsOnHomePage();
+
+                String textLogin =  driver.findElement(alertLogin).getText();
+                System.out.println("text alert positive     : " + textLogin);
             }
             case "negative invalid pwd" -> {
                 wait.until(ExpectedConditions.presenceOfElementLocated(errorInvUserPwd));
                 assertTrue(driver.findElement(errorInvUserPwd).isDisplayed());
                 assertEquals("Request failed with status code 401", driver.findElement(errorInvUserPwd).getText());
+
+                String textLogin =  driver.findElement(alertLogin).getText();
+                System.out.println("text alert invalid pwd  : " + textLogin);
             }
             case "negative invalid user" -> {
                 wait.until(ExpectedConditions.presenceOfElementLocated(errorInvUserPwd));
                 assertTrue(driver.findElement(errorInvUserPwd).isDisplayed());
                 assertEquals("Request failed with status code 404", driver.findElement(errorInvUserPwd).getText());
+
+                String textLogin =  driver.findElement(alertLogin).getText();
+                System.out.println("text alert invalid user : " + textLogin);
             }
             case "negative user blank" -> {
                 wait.until(ExpectedConditions.presenceOfElementLocated(errorUserBlank));
@@ -76,6 +86,7 @@ public class LoginPage {
             }
             default -> System.out.println("INVALID CONDITION");
         }
+
     }
 
 }
