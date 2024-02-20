@@ -37,12 +37,11 @@ public class HomePage {
     By pageVerification(String pageTitle) {
         return By.xpath("//*[text()='" + pageTitle + "']");
     }
+    By selectLang = By.xpath("//span[@class=\"MuiBox-root css-gecs57\"]");
 
-    By countryFlag (String flagOfCountry){
-        return By.xpath("//li[@role='menuitem']/descendant::*[text()='"+flagOfCountry+"']");
-    }
-
-    By selectFlag = By.xpath("//img[@alt='Indonesia']");
+   By countryFlag (String flagOfCountry){
+   return By.xpath("//li[@role=\"menuitem\"]/descendant::span[@class=\"MuiBox-root css-1ang2f9\"]/descendant::span[@class=\"wrapper lazy-load-image-background  lazy-load-image-loaded\"]/descendant::img[@alt=\" +flagOfCountry+ \"]");
+  }
 
     By alertLogin = By.xpath("//div[@role=\"alert\"]");
 
@@ -100,13 +99,17 @@ public class HomePage {
         driver.findElement(addButtonTopRight(buttonMark)).click();
     }
 
-    public void selectFlagLanguage(String idOrEn){
-        wait.until(ExpectedConditions.elementToBeClickable(selectFlag));
-       // wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(selectFlag));
-        driver.findElement(selectFlag).click();
-        //driver.findElement(countryFlag(idOrEn)).click();
+    public void selectFlagLanguage(String idOrEn) {
+        //close pop up login
+        driver.findElement(alertLogin).click();
 
-        System.out.println(idOrEn);
+        //click bendera untuk select language
+        wait.until(ExpectedConditions.elementToBeClickable(selectLang));
+        driver.findElement(selectLang).click();
+
+        //select language sesuai file feature
+        wait.until(ExpectedConditions.presenceOfElementLocated(countryFlag(idOrEn)));
+       driver.findElement(countryFlag(idOrEn)).click();
     }
 
 

@@ -33,4 +33,14 @@ public class LoyaltyStepdef {
     public void userSelectFlagLanguage(String languageFlag) {
         homePage.selectFlagLanguage(languageFlag);
     }
+
+    @When("user input loyalty name {string}")
+    public void userInputLoyaltyName(String inputLoyaltyName) {
+        loyaltyPage.userInputLoyaltyName(inputLoyaltyName);
+    }
+
+    @And("user input point to rupiah ratio {string}")
+    public void userInputPointToRupiahRatio(String pointToRupiah) {
+        loyaltyPage.inputPointToRupiahRatio(pointToRupiah);
+    }
 }

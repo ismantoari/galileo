@@ -57,6 +57,7 @@ public class LoginPage {
 
                 String textLogin =  driver.findElement(alertLogin).getText();
                 System.out.println("text alert positive     : " + textLogin);
+                //driver.findElement(alertLogin).click();
             }
             case "negative invalid pwd" -> {
                 wait.until(ExpectedConditions.presenceOfElementLocated(errorInvUserPwd));
