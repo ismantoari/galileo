@@ -43,4 +43,37 @@ public class LoyaltyStepdef {
     public void userInputPointToRupiahRatio(String pointToRupiah) {
         loyaltyPage.inputPointToRupiahRatio(pointToRupiah);
     }
+
+    @And("user choose Exclusive selection with {string}")
+    public void userChooseExclusiveSelectionWith(String exclusiveLoyalty) {
+        loyaltyPage.chooseExclusiveSelectionWith(exclusiveLoyalty);
+    }
+
+    @And("user choose Expiry Date selection with {string}")
+    public void userChooseExpiryDateSelectionWith(String pointExpiry) {
+        loyaltyPage.chooseExpiryDateSelectionWith(pointExpiry);
+    }
+
+
+    @And("user choose Accumulated Earn Point Duration for {string}")
+    public void userChooseAccumulatedEarnPointDurationFor(String accumulatedEarnPointDuration) {
+        loyaltyPage.chooseAccumulatedEarnPointDurationFor(accumulatedEarnPointDuration);
+    }
+
+    @And("user choose OTP digit for {string}")
+    public void userChooseOTPDigitFor(String OTPDigit) {
+        loyaltyPage.chooseOTPDigitFor(OTPDigit);
+    }
+
+
+    @And("user input loyalty description {string}")
+    public void userInputLoyaltyDescription(String textLoyaltyDescription) {
+        loyaltyPage.inputLoyaltyDescription(textLoyaltyDescription);
+    }
+
+
+    @And("user click add membership level")
+    public void userClickAddMembershipLevel() {
+        loyaltyPage.userClickAddMembershipLevel();
+    }
 }

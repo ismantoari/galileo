@@ -40,7 +40,7 @@ public class HomePage {
     By selectLang = By.xpath("//span[@class=\"MuiBox-root css-gecs57\"]");
 
    By countryFlag (String flagOfCountry){
-   return By.xpath("//li[@role=\"menuitem\"]/descendant::span[@class=\"MuiBox-root css-1ang2f9\"]/descendant::span[@class=\"wrapper lazy-load-image-background  lazy-load-image-loaded\"]/descendant::img[@alt=\" +flagOfCountry+ \"]");
+   return By.xpath("//li[@role=\"menuitem\"]/descendant::span[@class=\"MuiBox-root css-1ang2f9\"]/descendant::span[@class=\"wrapper lazy-load-image-background  lazy-load-image-loaded\"]/descendant::img[@alt=\"" + flagOfCountry + "\"]");
   }
 
     By alertLogin = By.xpath("//div[@role=\"alert\"]");
