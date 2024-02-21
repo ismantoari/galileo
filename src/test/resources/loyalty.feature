@@ -26,7 +26,7 @@ Feature: Loyalty
 
   @web
     @Loyalty
-  Scenario: Full Fill Page Add Loyalty without Daftar Hadiah
+  Scenario: Full Fill Page Add Loyalty
     Given user is on login page
     And user input username with "administrator"
     And user input password with "pvs1909~"
