@@ -100,14 +100,10 @@ public class HomePage {
     }
 
     public void selectFlagLanguage(String idOrEn) {
-        //close pop up login
-        driver.findElement(alertLogin).click();
 
-        //click bendera untuk select language
+        driver.findElement(alertLogin).click();
         wait.until(ExpectedConditions.elementToBeClickable(selectLang));
         driver.findElement(selectLang).click();
-
-        //select language sesuai file feature
         wait.until(ExpectedConditions.presenceOfElementLocated(countryFlag(idOrEn)));
        driver.findElement(countryFlag(idOrEn)).click();
     }
