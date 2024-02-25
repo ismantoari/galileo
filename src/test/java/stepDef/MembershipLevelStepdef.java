@@ -1,6 +1,7 @@
 package stepDef;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.When;
 import pages.MembershipLevelPage;
 
 public class MembershipLevelStepdef {
@@ -36,5 +37,33 @@ public class MembershipLevelStepdef {
     @And("user input max redeem {string} %")
     public void userInputMaxRedeem(String maxRedeemPercent) {
         membershipLevelPage.inputMaxRedeem(maxRedeemPercent);
+    }
+
+
+
+//    @And("user click add button reward list {string}")
+//    public void userClickAddButtonRewardList(String bottonAddRwd) {
+//        membershipLevelPage.clickAddButtonRewardList(bottonAddRwd);
+//    }
+
+        @And("user click add button reward list")
+    public void userClickAddButtonRewardList() {
+        membershipLevelPage.clickAddButtonRewardList();
+    }
+
+    @And("user input reward name {string}")
+    public void userInputRewardName(String rewardName) {
+        membershipLevelPage.inputRewardName(rewardName);
+    }
+
+    @And("user input reward description {string}")
+    public void userInputRewardDescription(String rewardDescription) {
+        membershipLevelPage.inputRewardDescription(rewardDescription);
+    }
+
+
+    @When("user click button Add Membership")
+    public void userClickButtonAddMembership() {
+        membershipLevelPage.clickButtonAddMembership();
     }
 }

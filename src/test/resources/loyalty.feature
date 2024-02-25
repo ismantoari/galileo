@@ -26,7 +26,7 @@ Feature: Loyalty
 
   @web
     @Loyalty
-  Scenario: Full Fill Page Add Loyalty
+  Scenario: Full Fill Page Add Loyalty with Reward List
     Given user is on login page
     And user input username with "administrator"
     And user input password with "pvs1909~"
@@ -38,9 +38,11 @@ Feature: Loyalty
     And user click add button "Tambah Loyalty"
     And verify show page "Loyalty"
     When user input loyalty name "Galileo SQA"
+    And user add loyalty picture with path "F:\PQA.png"
     And user input point to rupiah ratio "1"
     And user choose Exclusive selection with "Ya"
-    And user choose Expiry Date selection with "Expiry"
+    And user choose Expiry Date selection with "No Expired"
+    And user input Point Expiry in Day with setting "100"
     And user choose Accumulated Earn Point Duration for "3 bulan terakhir"
     And user choose OTP digit for "2 Angka"
     And user input loyalty description "Ini adalah deskripsi loyalty program dengan input text via automatic test"
@@ -49,16 +51,23 @@ Feature: Loyalty
     And user input color code for membership level "#CD7F32"
     And user add member level description "Bronze member as welcome level"
     And user input spending to earn one point by "1000"
-    #select partial redeem di bawah ini perlu scroll dulu
-    And user select partial redeem "Ya"
+    And user select partial redeem "Tidak"
     And user input max redeem "10" %
-    #And user input nama hadiah "SQA Happy Giveaway"
-    #And user input deskripsi hadiah "ini adalah deskripsi hadiah dari SQA Happy Giveaway"
-    #When user click button Tambah Membership
-    #Then
+    #And user click add button reward list "Tambah"
+    And user click add button reward list
+    And user input reward name "SQA Happy Giveaway"
+    And user input reward description "ini adalah deskripsi hadiah dari SQA Happy Giveaway"
+    And user click button Add Membership
+    And user set Applied Merchant "All"
+    #And user set Member Invitation
+    And user set Applied Payment Method "All Wallet"
+    When user click last button on loyalty page to "Simpan Perubahan"
+    #Then verify
 
 
   @web
+
+
   Scenario: Test Fawwaz 2
     Given user is on login page
     And user input username with "administrator"

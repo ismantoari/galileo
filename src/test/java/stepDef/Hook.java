@@ -6,8 +6,7 @@ import io.cucumber.java.Scenario;
 
 import java.util.Objects;
 
-import static helper.BestUtil.quitDriver;
-import static helper.BestUtil.startDriver;
+import static helper.BestUtil.*;
 
 
 public class Hook {
@@ -27,6 +26,7 @@ public class Hook {
     public void afterTest(Scenario scenario) throws InterruptedException {
         if (Objects.equals(tagsRunning, "@web")) {
             quitDriver();
+            driver.quit();
         }
     }
 }

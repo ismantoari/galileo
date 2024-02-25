@@ -6,6 +6,9 @@ import io.cucumber.java.en.When;
 import pages.HomePage;
 import pages.LoyaltyPage;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
 public class LoyaltyStepdef {
 
     LoyaltyPage loyaltyPage = new LoyaltyPage();
@@ -54,6 +57,12 @@ public class LoyaltyStepdef {
         loyaltyPage.chooseExpiryDateSelectionWith(pointExpiry);
     }
 
+    @And("user input Point Expiry in Day with setting {string}")
+    public void userInputPointExpiryinDaywithsetting(String paramPointExpiryInDay) {
+        loyaltyPage.inputPointExpiryinDaywithsetting(paramPointExpiryInDay);
+
+    }
+
 
     @And("user choose Accumulated Earn Point Duration for {string}")
     public void userChooseAccumulatedEarnPointDurationFor(String accumulatedEarnPointDuration) {
@@ -75,5 +84,72 @@ public class LoyaltyStepdef {
     @And("user click add membership level")
     public void userClickAddMembershipLevel() {
         loyaltyPage.userClickAddMembershipLevel();
+    }
+
+    @And("user add loyalty picture with path {string}")
+    public void userAddLoyaltyPictureWithPath(String membershipPicture) throws Exception {
+        loyaltyPage.addLoyaltyPictureWithPath(membershipPicture);
+        Robot rb = new Robot();
+
+        Thread.sleep(1000);
+        rb.keyPress(KeyEvent.VK_F);
+        rb.keyRelease(KeyEvent.VK_F);
+        Thread.sleep(200);
+
+        rb.keyPress(KeyEvent.VK_SHIFT);
+        rb.keyPress(KeyEvent.VK_SEMICOLON);
+        rb.keyRelease(KeyEvent.VK_SEMICOLON);
+        rb.keyRelease(KeyEvent.VK_SHIFT);
+
+        rb.keyPress(KeyEvent.VK_BACK_SLASH);
+        rb.keyRelease(KeyEvent.VK_BACK_SLASH);
+        Thread.sleep(200);
+
+        rb.keyPress(KeyEvent.VK_P);
+        rb.keyRelease(KeyEvent.VK_P);
+
+        rb.keyPress(KeyEvent.VK_Q);
+        rb.keyRelease(KeyEvent.VK_Q);
+
+        rb.keyPress(KeyEvent.VK_A);
+        rb.keyRelease(KeyEvent.VK_A);
+        Thread.sleep(200);
+
+        rb.keyPress(KeyEvent.VK_PERIOD);
+        rb.keyRelease(KeyEvent.VK_PERIOD);
+        Thread.sleep(200);
+
+        rb.keyPress(KeyEvent.VK_J);
+        rb.keyRelease(KeyEvent.VK_J);
+        Thread.sleep(200);
+
+        rb.keyPress(KeyEvent.VK_P);
+        rb.keyRelease(KeyEvent.VK_P);
+        Thread.sleep(200);
+
+        rb.keyPress(KeyEvent.VK_G);
+        rb.keyRelease(KeyEvent.VK_G);
+        Thread.sleep(200);
+
+        rb.keyPress(KeyEvent.VK_ENTER);
+        rb.keyRelease(KeyEvent.VK_ENTER);
+        Thread.sleep(200);
+    }
+
+
+    @And("user set Applied Merchant {string}")
+    public void userSetAppliedMerchant(String appliedMerchant) {
+        loyaltyPage.setAppliedMerchant(appliedMerchant);
+    }
+
+    @And("user set Applied Payment Method {string}")
+    public void userSetAppliedPaymentMethod(String appliedPaymentMethod) {
+        loyaltyPage.setAppliedPaymentMethod(appliedPaymentMethod);
+    }
+
+
+    @When("user click last button on loyalty page to {string}")
+    public void userClickLastButtonOnLoyaltyPageTo(String submitButton) {
+        loyaltyPage.clickLastButtonOnLoyaltyPageTo(submitButton);
     }
 }
