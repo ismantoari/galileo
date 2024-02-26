@@ -152,4 +152,9 @@ public class LoyaltyStepdef {
     public void userClickLastButtonOnLoyaltyPageTo(String submitButton) {
         loyaltyPage.clickLastButtonOnLoyaltyPageTo(submitButton);
     }
+
+    @Then("verify the existence of a loyalty program {string}")
+    public void verifyTheExistenceOfALoyaltyProgram(String loyaltyName) {
+        loyaltyPage.verifyTheExistenceOfALoyaltyProgram(loyaltyName);
+    }
 }

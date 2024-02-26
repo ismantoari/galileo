@@ -1,6 +1,7 @@
 package stepDef;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.MembershipLevelPage;
 
@@ -66,4 +67,6 @@ public class MembershipLevelStepdef {
     public void userClickButtonAddMembership() {
         membershipLevelPage.clickButtonAddMembership();
     }
+
+
 }

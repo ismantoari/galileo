@@ -39,9 +39,21 @@ public class LoyaltyPage {
 
     By appliedMerchantAll = By.name("loyalty_merchant");
 
-    By paymentMethodAllWallet = By.name("loyalty_wallet");
+    By allPaymentMethodincludeCashId = By.xpath("//p[text()='Semua Payment method termasuk Cash']/preceding-sibling::*");
+    By allPaymentMethodincludeCashEn = By.xpath("//p[text()='All Payment Method Including Cash']/preceding-sibling::*");
 
-    By buttonLoyaltySaveChanges = By.xpath("//button[@type=\"submit\"]");
+
+    By paymentMethodAllWallet = By.name("loyalty_wallet");
+    By paymentMethodAllBnpl = By.name ("loyalty_bnpl");
+    By paymentMethodAllBank = By.name("loyalty_bank");
+
+    //By buttonLoyaltySaveChanges = By.xpath("//button[@type='submit']/child::*");
+    By buttonTambahLoyalty = By.xpath("//button[text()='Tambah Loyalty']");
+    By buttonAddLoyaltyId = By.xpath("//button[text()='Tambah Loyalty']");
+    By buttonAddLoyaltyEn = By.xpath("//button[text()='Add Loyalty']");
+
+    By textBoxLoyaltySearch = By.xpath("(//div[@class='MuiFormControl-root MuiTextField-root css-i44wyl']/child::*/child::*)[2]");
+    By assertLoyaltyName = By.xpath("//h6[@class=\"MuiTypography-root MuiTypography-subtitle2 MuiTypography-noWrap css-1k96qjc\"]");
 
     String selectAll = Keys.chord(Keys.CONTROL, "a");
 
@@ -60,36 +72,7 @@ public class LoyaltyPage {
             wait.until(ExpectedConditions.presenceOfElementLocated(inputTextLoyaltyName));
             driver.findElement(inputTextLoyaltyName).sendKeys(inputLoyaltyName);
         }
-        //======================== PENAMBAHAN GAMBAR OYALTY +++++++++++++++++++++++
 
-        public void uploadPicture () throws Exception {
-//            Robot rb = new Robot();
-//
-//            rb.keyPress(KeyEvent.VK_D);
-//            rb.keyRelease(KeyEvent.VK_D);
-//            Thread.sleep(2000);
-//
-//            rb.keyPress(KeyEvent.VK_SHIFT);
-//            rb.keyPress(KeyEvent.VK_SEMICOLON);
-//            rb.keyRelease(KeyEvent.VK_SEMICOLON);
-//            rb.keyRelease(KeyEvent.VK_SHIFT);
-//
-//            rb.keyPress(KeyEvent.VK_BACK_SLASH);
-//            rb.keyRelease(KeyEvent.VK_BACK_SLASH);
-//            Thread.sleep(2000);
-//
-//            rb.keyPress(KeyEvent.VK_P);
-//            rb.keyRelease(KeyEvent.VK_P);
-//
-//            rb.keyPress(KeyEvent.VK_I);
-//            rb.keyRelease(KeyEvent.VK_I);
-//
-//            rb.keyPress(KeyEvent.VK_C);
-//            rb.keyRelease(KeyEvent.VK_C);
-//            Thread.sleep(2000);
-
-
-        }
         public void addLoyaltyPictureWithPath(String membershipPicture) {
 
             driver.findElement(uploadLoyaltyProgramLogo).click();
@@ -107,19 +90,17 @@ public class LoyaltyPage {
 
         public void chooseExclusiveSelectionWith (String exclusiveLoyalty){
             switch (exclusiveLoyalty) {
-                case "Tidak" -> {
+                case "Tidak" :
                     driver.findElement(By.xpath("//div[@class=\"MuiStack-root css-j7qwjs\" and text()=\"Tidak\"]/preceding::*[@name=\"loyalty_program_exclusive\"]")).click();
-                }
-                case "No" -> {
+                case "No" :
                     driver.findElement(By.xpath("//div[@class=\"MuiStack-root css-j7qwjs\" and text()=\"Tidak\"]/preceding::*[@name=\"loyalty_program_exclusive\"]")).click();
-                }
-                case "Ya" -> {
+                    break;
+                case "Ya" :
                     driver.findElement(By.xpath("//div[@class=\"MuiStack-root css-j7qwjs\" and text()=\"Tidak\"]/following::*[@name=\"loyalty_program_exclusive\"]")).click();
-                }
-                case "Yes" -> {
+                case "Yes" :
                     driver.findElement(By.xpath("//div[@class=\"MuiStack-root css-j7qwjs\" and text()=\"Tidak\"]/following::*[@name=\"loyalty_program_exclusive\"]")).click();
-                }
-                default -> System.out.println("INVALID CONDITION");
+                    break;
+                default : System.out.println("INVALID CONDITION");
             }
         }
 
@@ -167,34 +148,63 @@ public class LoyaltyPage {
 
         public void setAppliedMerchant(String appliedMerchant){
             switch (appliedMerchant){
-                case ("All")->{
+                case ("All"):
                 driver.findElement(appliedMerchantAll).click();
-                }
-                default -> {
-                }
+                break;
+                default :
             }
         }
 
         public void setAppliedPaymentMethod(String appliedPaymentMethod) {
             switch (appliedPaymentMethod) {
-                case ("All Wallet") -> {
+                case ("Semua Payment method termasuk Cash"):
+                    driver.findElement(allPaymentMethodincludeCashId).click();
+                    break;
+                case ("All Payment Method Including Cash"):
+                    driver.findElement(allPaymentMethodincludeCashEn).click();
+                    break;
+                case ("All Wallet") :
                     driver.findElement(paymentMethodAllWallet).click();
-                }
-                default -> {
-
-                }
+                    break;
+                case ("All BNPL") :
+                    driver.findElement(paymentMethodAllBnpl).click();
+                    break;
+                case ("All Bank") :
+                    driver.findElement(paymentMethodAllBank).click();
+                    break;
+                case ("All Wallet; All Bnpl") :
+                    driver.findElement(paymentMethodAllWallet).click();
+                    driver.findElement(paymentMethodAllBnpl).click();
+                case ("All Wallet; All Bank") :
+                    driver.findElement(paymentMethodAllWallet).click();
+                    driver.findElement(paymentMethodAllBank).click();
+                    break;
+                case ("All Wallet; All Bnpl, All Bank"):
+                    driver.findElement(paymentMethodAllWallet).click();
+                    driver.findElement(paymentMethodAllBnpl).click();
+                    driver.findElement(paymentMethodAllBank).click();
+                    break;
+                default :
             }
         }
 
         public void clickLastButtonOnLoyaltyPageTo(String submitButton){
             switch (submitButton){
-                case ("Simpan Perubahan") ->{
-                    driver.findElement(buttonLoyaltySaveChanges).click();
-                }
-                case ("Save Changes") ->{
-                    driver.findElement(buttonLoyaltySaveChanges).click();
-                }
+                case ("Tambah Loyalty") :
+                    driver.findElement(buttonAddLoyaltyId).click();
+                    break;
+                case ("Save Changes") :
+                    driver.findElement(buttonAddLoyaltyEn).click();
+                    break;
             }
+        }
+
+        public void verifyTheExistenceOfALoyaltyProgram(String loyaltyName){
+            WebElement searchInput = driver.findElement(textBoxLoyaltySearch);
+            searchInput.sendKeys(selectAll, Keys.chord(Keys.DELETE));
+            searchInput.sendKeys(loyaltyName);//, Keys.chord(Keys.ENTER));
+            driver.findElement(assertLoyaltyName).isDisplayed();
+
         }
 
 
