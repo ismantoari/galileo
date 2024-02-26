@@ -68,6 +68,50 @@ Feature: Loyalty
     Then verify the existence of a loyalty program "PQA Galileo Loyalty 1"
 
 
+  @web
+  @Loyalty
+  Scenario: Edit Loyalty Program - Loyalty program Name
+    #precondition login
+    Given user is on login page
+    And user input username with "administrator"
+    And user input password with "pvs1909~"
+    And user click login button
+    And check login "positive"
+    #set language and page
+    And user select flag language "Indonesia"
+    And user click main menu "Loyalty Program"
+    And user click sub menu "Loyalty"
+    #editing process
+    And user search loyalty program "PQA Galileo Loyalty 1"
+    And user click burger menu loyalty list
+    And user click edit loyalty list
+    And user input new loyalty name "PQA Galileo Loyalty 2"
+    When user click last button on loyalty page to "Simpan Perubahan"
+    Then verify the existence of a loyalty program "PQA Galileo Loyalty 2"
+
+  @web
+  @Loyalty
+  Scenario: Delete Loyalty Program - Loyalty
+    #precondition login
+    Given user is on login page
+    And user input username with "administrator"
+    And user input password with "pvs1909~"
+    And user click login button
+    And check login "positive"
+    #set language and page
+    And user select flag language "Indonesia"
+    And user click main menu "Loyalty Program"
+    And user click sub menu "Loyalty"
+    #deletion process
+    And user search loyalty program "PQA Galileo Loyalty 2"
+    And user click burger menu loyalty list
+    And user click delete loyalty list
+    And there is pop up confirmation deletion with text "Apakah anda yakin ingin menghapus loyalty PQA Galileo Loyalty 2?"
+    When user click confimation button "Hapus"
+    Then verify there is no loyalty program "PQA Galileo Loyalty 2"
+
+
+
 
 
 

@@ -156,5 +156,47 @@ public class LoyaltyStepdef {
     @Then("verify the existence of a loyalty program {string}")
     public void verifyTheExistenceOfALoyaltyProgram(String loyaltyName) {
         loyaltyPage.verifyTheExistenceOfALoyaltyProgram(loyaltyName);
+
+    }
+
+    @And("user search loyalty program {string}")
+    public void userSearchLoyaltyProgram(String searchContent) {
+        loyaltyPage.searchLoyaltyProgram(searchContent);
+    }
+
+    @And("user click burger menu loyalty list")
+    public void userClickBurgerMenuLoyaltyList() {
+        loyaltyPage.clickBurgerMenuLoyaltyList();
+    }
+
+    @And("user click delete loyalty list")
+    public void userClickDeleteLoyaltyList() {
+        loyaltyPage.clickDeleteLoyaltyList();
+    }
+
+    @And("user click edit loyalty list")
+    public void userClickEditLoyaltyList() {
+        loyaltyPage.clickEditLoyaltyList();
+    }
+
+
+    @And("user input new loyalty name {string}")
+    public void userInputNewLoyaltyName(String newLoyaltyName) {
+        loyaltyPage.inputNewLoyaltyName(newLoyaltyName);
+    }
+
+    @And("there is pop up confirmation deletion with text {string}")
+    public void thereIsPopUpConfirmationDeletionWithText(String popUpConfirmDelete){
+        loyaltyPage.popUpConfirmationDeletionWithText(popUpConfirmDelete);
+    }
+
+    @When("user click confimation button {string}")
+    public void userClickConfimationButton(String confirmationDelete) {
+        loyaltyPage.clickButtonDeleteConfirmation (confirmationDelete);
+    }
+
+    @Then("verify there is no loyalty program {string}")
+    public void verifyThereIsNoLoyaltyProgram(String loyaltyNameToDelete) {
+        loyaltyPage.verifyThereIsNoLoyaltyProgram(loyaltyNameToDelete);
     }
 }
