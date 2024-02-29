@@ -149,9 +149,10 @@ public class LoyaltyStepdef {
 
 
     @When("user click last button on loyalty page to {string}")
-    public void userClickLastButtonOnLoyaltyPageTo(String submitButton) {
-        loyaltyPage.clickLastButtonOnLoyaltyPageTo(submitButton);
+    public void userClickLastButtonOnLoyaltyPageTo(String addButton) {
+        loyaltyPage.clickLastButtonOnLoyaltyPageTo(addButton);
     }
+    //======================================
 
     @Then("verify the existence of a loyalty program {string}")
     public void verifyTheExistenceOfALoyaltyProgram(String loyaltyName) {
@@ -199,4 +200,6 @@ public class LoyaltyStepdef {
     public void verifyThereIsNoLoyaltyProgram(String loyaltyNameToDelete) {
         loyaltyPage.verifyThereIsNoLoyaltyProgram(loyaltyNameToDelete);
     }
+
+
 }

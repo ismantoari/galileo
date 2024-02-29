@@ -19,58 +19,46 @@ public class LoyaltyPage {
     By addLoyalty = By.xpath("//button[@class=\"MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ra0vbb\"]");
     By inputTextLoyaltyName = By.xpath("//input[@name=\"loyalty_program_name\"]");
     By inputTextPointToRupiah = By.id("loyalty_program_point_to_rupiah_ratio");
-
     By selectPointExpiryDate (String pointExpiry) {
         return By.xpath("(//div[text()='"+pointExpiry+ "']/parent::*/parent::*)/child::*/child::input[@type=\"radio\"]");
     }
-
     By selectAccumulationEarnPointDuration (String earnPointDuration) {
         return By.xpath("(//div[text()='" + earnPointDuration + "']/parent::*/parent::*)/child::*/child::input[@type='radio']");
     }
-
     By selectOTPDigit (String OTPDigit){
         return By.xpath("(//div[text()='" +OTPDigit+"']/parent::*/parent::*)/child::*/child::input[@type='radio']");
     }
-
     By loyaltyDescription = By.xpath("//textarea[@name=\"loyalty_program_description\"]");
     By buttonAddMembership = By.xpath("//div[@class=\"MuiStack-root css-1sa853d\"]/child::button[@type=\"button\"]");
 
     By uploadLoyaltyProgramLogo = By.xpath("//div[@role=\"presentation\"]");
     By logoLoyalty = By.xpath("//h6[text()='Logo Loyalty Program']");
     By textBoxPointExpiryinDay = By.id("loyalty_program_point_expiry_day");
-
     By appliedMerchantAll = By.name("loyalty_merchant");
-
     By allPaymentMethodincludeCashId = By.xpath("//p[text()='Semua Payment method termasuk Cash']/preceding-sibling::*");
     By allPaymentMethodincludeCashEn = By.xpath("//p[text()='All Payment Method Including Cash']/preceding-sibling::*");
-
-
     By paymentMethodAllWallet = By.name("loyalty_wallet");
     By paymentMethodAllBnpl = By.name ("loyalty_bnpl");
     By paymentMethodAllBank = By.name("loyalty_bank");
 
-    //By buttonLoyaltySaveChanges = By.xpath("//button[@type='submit']/child::*");
-    By buttonTambahLoyalty = By.xpath("//button[text()='Tambah Loyalty']");
-    By buttonAddLoyaltyId = By.xpath("//button[text()='Tambah Loyalty']");
-    By buttonAddLoyaltyEn = By.xpath("//button[text()='Add Loyalty']");
+    By buttonAddLoyalty (String buttonAddLyt){
+        return By.xpath("//button[text()='"+buttonAddLyt+"']");
+    }
 
-    By buttonEditSaveChangesId = By.xpath("//button[text()='Simpan Perubahan']");
-    By buttonEditSaveChangesEn = By.xpath("//button[text()='Save Changes']");
+//    By buttonEditSaveChangesId = By.xpath("//button[text()='Simpan Perubahan']");
+//    By buttonEditSaveChangesEn = By.xpath("//button[text()='Save Changes']");
 
     By textBoxLoyaltySearch = By.xpath("(//div[@class='MuiFormControl-root MuiTextField-root css-i44wyl']/child::*/child::*)[2]");
     By resultSearchLoyaltyName (String searchLoyaltyName) {
         return By.xpath("//h6[@class='MuiTypography-root MuiTypography-subtitle2 MuiTypography-noWrap css-1k96qjc' and text()='"+ searchLoyaltyName+ "']");
     }
     By burgerMenuLoyaltyList = By.xpath("//td[@class='MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1lymf83']//button[@type='button']");
-
     By buttonDeleteLoyaltyList = By.xpath("//li[@class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-sbyx5u']");
     By buttonEditLoyaltyList   = By.cssSelector(".MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-gutters.css-1q7d9dc");
     By popUpDeleteConfirmation = By.xpath("//h6[@class=\"MuiTypography-root MuiTypography-subtitle1 css-1glvazp\"]");
-
     By buttonDeleteConfirmation (String deleteConfirmation) {
         return By.xpath("//button[text()='"+deleteConfirmation+"']");
     }
-
     By alert = By.xpath("//div[@role=\"alert\"]");
 
 
@@ -93,11 +81,8 @@ public class LoyaltyPage {
         }
 
         public void addLoyaltyPictureWithPath(String membershipPicture) {
-
             driver.findElement(uploadLoyaltyProgramLogo).click();
-
             System.out.println(membershipPicture);
-
         }
 
         //===========================================================================
@@ -207,40 +192,43 @@ public class LoyaltyPage {
             }
         }
 
-        public void clickLastButtonOnLoyaltyPageTo(String submitButton){
-            switch (submitButton){
-                case ("Tambah Loyalty") :
-                    driver.findElement(buttonAddLoyaltyId).click();
-                    break;
-                case ("Add Loyalty") :
-                    driver.findElement(buttonAddLoyaltyEn).click();
-                    break;
-                case ("Simpan Perubahan"):
-                    driver.findElement(buttonEditSaveChangesId).click();
-                    break;
-                case ("Save Changes"):
-                    driver.findElement(buttonEditSaveChangesEn).click();
 
-            }
-        }
+
+//        public void clickLastButtonOnLoyaltyPageTo(String submitButton){
+//            switch (submitButton){
+//                case ("Tambah Loyalty") :
+//                    driver.findElement(buttonAddLoyaltyId).click();
+//                    break;
+//                case ("Add Loyalty") :
+//                    driver.findElement(buttonAddLoyaltyEn).click();
+//                    break;
+//                case ("Simpan Perubahan"):
+//                    driver.findElement(buttonEditSaveChangesId).click();
+//                    break;
+//                case ("Save Changes"):
+//                    driver.findElement(buttonEditSaveChangesEn).click();
+//
+//            }
+//        }
+
+    public void clickLastButtonOnLoyaltyPageTo (String submitButton) {
+        driver.findElement(buttonAddLoyalty(submitButton)).click();
+    }
 
         public void searchLoyaltyProgram(String loyaltyName){
             WebElement searchInput = driver.findElement(textBoxLoyaltySearch);
             searchInput.sendKeys(selectAll, Keys.chord(Keys.DELETE));
             searchInput.sendKeys(loyaltyName);
-
         }
 
 
         public void verifyTheExistenceOfALoyaltyProgram(String loyaltyProgramName){
             searchLoyaltyProgram(loyaltyProgramName);
             driver.findElement(resultSearchLoyaltyName(loyaltyProgramName)).isDisplayed();
-
         }
 
         public void clickBurgerMenuLoyaltyList(){
             driver.findElement(burgerMenuLoyaltyList).click();
-
         }
 
         public void clickDeleteLoyaltyList(){
@@ -261,7 +249,6 @@ public class LoyaltyPage {
             String confirmTextDelete = driver.findElement(popUpDeleteConfirmation).getText();
             System.out.println("isi pop up confirmation : " + confirmTextDelete);
             assertEquals(popUpConfirmDelete, confirmTextDelete);
-
         }
 
         public void clickButtonDeleteConfirmation (String confirmationDelete){
@@ -271,7 +258,6 @@ public class LoyaltyPage {
         public void verifyThereIsNoLoyaltyProgram(String loyaltyNameToDelete){
             searchLoyaltyProgram(loyaltyNameToDelete);
             driver.findElement(By.xpath("//img[@alt='No Data']"));
-
         }
 
 }

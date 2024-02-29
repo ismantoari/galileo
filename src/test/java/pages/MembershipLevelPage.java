@@ -7,9 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javax.lang.model.element.Element;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 import static helper.BestUtil.driver;
 
@@ -22,12 +20,8 @@ By spendingToEarnPoint = By.name("currency_value");
 
 By maxRedeem = By.name("max_redeemed_value");
 
-//    By buttonAddReward (String buttonAddRwd){
-//        return By.xpath("//div[@class=\"MuiStack-root css-snxq2g\"]/child::*/child::*[text()='"+ buttonAddRwd+"']");
-//    }
     By buttonAddReward = By.xpath("(//div[@class=\"MuiStack-root css-snxq2g\"]/child::*/child::*)[2]");
 
-//By selectPartialRedeem = By.xpath("input[value='Tidak']");
     By radioSelectPartialRedeem (String inputPartialRedeem){
         return By.xpath("(//span[text()='"+inputPartialRedeem+"']/parent::*)/child::*/child::input[@type=\"radio\"]");
     }
@@ -61,7 +55,6 @@ By maxRedeem = By.name("max_redeemed_value");
         WebElement STEOP = driver.findElement(spendingToEarnPoint);
         STEOP.sendKeys(selectAll, Keys.chord(Keys.DELETE));
         driver.findElement(spendingToEarnPoint).sendKeys(spendingToPoint);
-
     }
 
     public void selectPartialRedeem (String selectOptionPartialRedeem){
@@ -102,9 +95,7 @@ By maxRedeem = By.name("max_redeemed_value");
         }
     }
 
-//public void clickAddButtonRewardList(String buttonAddRwd) {
-//    driver.findElement(buttonAddReward(buttonAddRwd)).click();
-//}
+
 
     public void clickAddButtonRewardList() {
         driver.findElement(buttonAddReward).click();

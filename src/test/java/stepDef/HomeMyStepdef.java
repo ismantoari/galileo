@@ -33,5 +33,25 @@ public class HomeMyStepdef {
         homePage.pageVerivication(pageTitle);
     }
 
+    @And("check total {string}")
+    public void checkTotal(String totalRelatedCount) {
+        homePage.checkTotal(totalRelatedCount);
+    }
+
+    @And("check active {string}")
+    public void checkActive(String activeReletedCount) {
+        homePage.checkActive(activeReletedCount);
+    }
+
+    @And("check upcoming {string}")
+    public void checkUpcoming(String upcomingRelatedCount) {
+        homePage.checkUpcoming(upcomingRelatedCount);
+    }
+
+    @And("check expired {string}")
+    public void checkExpired(String expiredRelatedCount) {
+        homePage.checkExpired(expiredRelatedCount);
+    }
+
 
 }

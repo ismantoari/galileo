@@ -41,7 +41,7 @@ Feature: Loyalty
     And user click add button "Tambah Loyalty"
     And verify show page "Loyalty"
     When user input loyalty name "PQA Galileo Loyalty 1"
-    And user add loyalty picture with path "F:\PQA.png"
+    #And user add loyalty picture with path "F:\PQA.png"
     And user input point to rupiah ratio "1"
     And user choose Exclusive selection with "Ya"
     And user choose Expiry Date selection with "No Expired"
@@ -63,6 +63,7 @@ Feature: Loyalty
     And user set Applied Merchant "All"
     #And user set Member Invitation
     And user set Applied Payment Method "All Wallet"
+    #When user click final button by "Tambah Loyalty"
     When user click last button on loyalty page to "Tambah Loyalty"
     #Verification sucsess add loyalty
     Then verify the existence of a loyalty program "PQA Galileo Loyalty 1"
